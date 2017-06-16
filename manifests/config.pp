@@ -10,7 +10,7 @@ class gitolitepuppet::config inherits gitolitepuppet {
 		mode => '0755',
 		content => epp('gitolitepuppet/puppet-update.epp'),
 	}
-	file { '/var/repos/local/hooks/repo-specific/puppet-post-receive':
+	file { '/var/repos/local/hooks/repo-specific':
 		ensure => directory,
 		recurse => true,
 	}
