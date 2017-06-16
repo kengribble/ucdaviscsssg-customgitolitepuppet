@@ -44,8 +44,5 @@
 #
 class gitolitepuppet {
   require gitolite
-  gitolite {'repo_specific_hooks':
-	repo_specific_hooks => true,
-  }
   include gitolitepuppet::config
 }
