@@ -2,9 +2,9 @@
  
 read oldrev newrev refname
  
-REPOSITORY="git@puppet:puppet"
+REPOSITORY="<%= $gitolite[user_name] -%>@puppet:puppet"
 BRANCH=$( echo "${refname}" | sed -n 's!^refs/heads/!!p' )
-ENVIRONMENT_BASE="/etc/puppet/environments"
+ENVIRONMENT_BASE="/etc/puppetlabs/code/environments"
  
 # master branch, as defined by git, is production
 if [[ "${BRANCH}" == "master" ]]; then
