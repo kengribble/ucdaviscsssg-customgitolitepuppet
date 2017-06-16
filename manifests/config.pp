@@ -3,14 +3,14 @@ class gitolitepuppet::config inherits gitolitepuppet {
 		ensure => file,
 		owner => 'gitolite3',
 		group => 'gitolite3',
-		mode => 0755,
+		mode => '0755',
 		content => epp('gitolitepuppet/puppet-update.epp'),
 	}
 	file { '/var/repos/local/hooks/repo-specific/puppet-post-receive':
 		ensure => file,
 		owner => 'gitolite3',
 		group => 'gitolite3',
-		mode => 0755,
+		mode => '0755',
 		content => epp('gitolitepuppet/puppet-post-receive.epp'),
 	}
 }
