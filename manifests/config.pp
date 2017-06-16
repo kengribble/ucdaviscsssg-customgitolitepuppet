@@ -1,4 +1,4 @@
-class gitolitepuppet::config.pp inherits gitolitepuppet {
+class gitolitepuppet::config inherits gitolitepuppet {
 	file { '/var/repos/local/VREF/puppet-update':
 		ensure => file,
 		owner => 'gitolite3',
