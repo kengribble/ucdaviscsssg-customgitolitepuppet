@@ -1,12 +1,12 @@
 {
-  "name": "ucdaviscsssg-customgitolitepuppet",
+  "name": "ucdaviscsssg-gitolitepuppet",
   "version": "0.1.0",
   "author": "ucdaviscsssg",
   "summary": null,
   "license": "Apache-2.0",
-  "source": "https://github.com/kengribble/ucdaviscsssg-customgitolitepuppet.git",
-  "project_page": "https://github.com/kengribble/ucdaviscsssg-customgitolitepuppet",
-  "issues_url": "https://github.com/kengribble/ucdaviscsssg-customgitolitepuppet/issues",
+  "source": "https://github.com/kengribble/ucdaviscsssg-gitolitepuppet.git",
+  "project_page": "https://github.com/kengribble/ucdaviscsssg-gitolitepuppet",
+  "issues_url": "https://github.com/kengribble/ucdaviscsssg-gitolitepuppet/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],

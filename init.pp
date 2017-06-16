@@ -1,7 +1,7 @@
-# Class: customgitolitepuppet
+# Class: gitolitepuppet
 # ===========================
 #
-# Full description of class customgitolitepuppet here.
+# Full description of class gitolitepuppet here.
 #
 # Parameters
 # ----------
@@ -28,7 +28,7 @@
 # --------
 #
 # @example
-#    class { 'customgitolitepuppet':
+#    class { 'gitolitepuppet':
 #      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
@@ -42,7 +42,7 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class customgitolitepuppet {
+class gitolitepuppet {
 
 
 }

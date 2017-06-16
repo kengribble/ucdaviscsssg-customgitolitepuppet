@@ -1,12 +1,12 @@
-# customgitolitepuppet
+# gitolitepuppet
 
 #### Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with customgitolitepuppet](#setup)
-    * [What customgitolitepuppet affects](#what-customgitolitepuppet-affects)
+1. [Setup - The basics of getting started with gitolitepuppet](#setup)
+    * [What gitolitepuppet affects](#what-customgitolitepuppet-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with customgitolitepuppet](#beginning-with-customgitolitepuppet)
+    * [Beginning with gitolitepuppet](#beginning-with-customgitolitepuppet)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -25,7 +25,7 @@ management, etc.), this is the time to mention it.
 
 ## Setup
 
-### What customgitolitepuppet affects **OPTIONAL**
+### What gitolitepuppet affects **OPTIONAL**
 
 If it's obvious what your module touches, you can skip this section. For
 example, folks can probably figure out that your mysql_instance module affects
@@ -47,7 +47,7 @@ If your most recent release breaks compatibility or requires particular steps
 for upgrading, you might want to include an additional "Upgrading" section
 here.
 
-### Beginning with customgitolitepuppet
+### Beginning with gitolitepuppet
 
 The very basic steps needed for a user to get the module up and running. This
 can include setup steps, if necessary, or it can be an example of the most
