@@ -1,8 +1,8 @@
 class gitolitepuppet::config inherits gitolitepuppet {
 	file { ['/var/repos/local', 
-		'/var/repos/local/VREF'
+		'/var/repos/local/VREF',
 		'/var/repos/local/hooks,
-		'/var/repos/local/hooks/repo-specific']:
+		'/var/repos/local/hooks/repo-specific,']:
 		ensure => directory,
 		owner => 'gitolite3',
 		group => 'gitolite3',
