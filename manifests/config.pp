@@ -13,7 +13,4 @@ class gitolitepuppet::config inherits gitolitepuppet {
 		mode => 0755,
 		content => epp('gitolitepuppet/puppet-post-receive.epp'),
 	}
-	file { "/var/repos/.gitolite.rc":
-		content => epp('gitolitepuppet/gitolite.rc.epp'),
-	}
 }
