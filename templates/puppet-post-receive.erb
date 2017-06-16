@@ -1,0 +1,36 @@
+#!/bin/bash
+ 
+read oldrev newrev refname
+ 
+REPOSITORY="git@puppet:puppet"
+BRANCH=$( echo "${refname}" | sed -n 's!^refs/heads/!!p' )
+ENVIRONMENT_BASE="/etc/puppet/environments"
+ 
+# master branch, as defined by git, is production
+if [[ "${BRANCH}" == "master" ]]; then
+	ACTUAL_BRANCH="production"
+else
+	ACTUAL_BRANCH=${BRANCH}
+fi
+ 
+# newrev is a bunch of 0s
+echo "${newrev}" | grep -qs '^0*$'
+if [ "$?" -eq "0" ]; then
+	# branch is marked for deletion
+	if [ "${ACTUAL_BRANCH}" = "production" ]; then
+		echo "No way!"
+		exit 1
+	fi
+	echo "Deleting remote branch ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}"
+	sudo su - puppet -c "cd ${ENVIRONMENT_BASE}; rm -rf ${ACTUAL_BRANCH}"
+else
+	echo "Updating remote branch ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}"
+	if [ -d "${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}" ]; then
+		sudo su - puppet -c "cd ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}; git fetch --all; git reset --hard origin/${BRANCH}"
+	else
+		sudo su - puppet -c "cd ${ENVIRONMENT_BASE}; git clone ${REPOSITORY} ${ACTUAL_BRANCH} --branch ${BRANCH}"
+	fi
+fi
+ 
+exit 0
+
