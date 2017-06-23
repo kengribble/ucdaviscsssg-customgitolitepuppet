@@ -23,23 +23,46 @@ class gitolitepuppet::config inherits gitolitepuppet {
 		content => epp('gitolitepuppet/puppet-post-receive.epp'),
 		require => File["/var/repos/local/hooks/repo-specific"],
 	}
-        sudoers::allowed_command { "pupadm":
-          group   => 'pupadm',
-          command => "/bin/su - puppet *",
+        group { 'pup':
+             gid => 1013,
+             before => User['pup'],
+        }
+        user { 'pup':
+              comment => "Pup For gitolite-puppet",
+              uid => 1012,
+              gid => 'pup',
+              shell => "/bin/bash",
+              home => '/var/pup',
+              before => Group['pupadm'],
+        }
+        group { 'pupadm':
+             gid => 1012,
+             members => ['gribble', 'gitolite3'], 
+        }
+	file { ['/var/pup',
+                '/var/pup/.ssh',]:
+                ensure => directory,
+                owner => 'pup',
+                group => 'pup',
+        }
+        ssh_keygen { 'pup':
+          home => '/var/pup',
+          bits => '4096',
+          comment => 'pup',
+          before => File['/var/repos/.gitolite/keydir/pup.pub'],
+          require => File['/var/pup/.ssh'],
+        }
+        sudoers::allowed_command{ "pupadm":
+          group   => "pupadm",
+          command => "/bin/su - pup *",
           require_password => false,
           comment => "pupadm can use pup",
         }
-        ssh_keygen { 'puppet':
-          home => '/var/puppet',
-          bits => '4096',
-          comment => 'puppet',
-          before => File['/var/repos/.gitolite/keydir/puppet.pub'],
-        }
-        file { '/var/repos/.gitolite/keydir/puppet.pub':
+        file { '/var/repos/.gitolite/keydir/pup.pub':
           ensure => file,
-          source => '/var/puppet/.ssh/id_rsa.pub',
+          source => '/var/pup/.ssh/id_rsa.pub',
           mode => '0600',
-          owner => 'gitolite3',
-          group => 'gitolite3',
+          owner  => $gitolite::user_name,
+          group  => $gitolite::group_name,
         }	
 }
