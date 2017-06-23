@@ -22,13 +22,13 @@ if [ "$?" -eq "0" ]; then
 		exit 1
 	fi
 	echo "Deleting remote branch ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}"
-	sudo su - puppet -c "cd ${ENVIRONMENT_BASE}; rm -rf ${ACTUAL_BRANCH}"
+	sudo su - pup -c "cd ${ENVIRONMENT_BASE}; rm -rf ${ACTUAL_BRANCH}"
 else
 	echo "Updating remote branch ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}"
 	if [ -d "${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}" ]; then
-		sudo su - puppet -c "cd ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}; git fetch --all; git reset --hard origin/${BRANCH}"
+		sudo su - pup -c "cd ${ENVIRONMENT_BASE}/${ACTUAL_BRANCH}; git fetch --all; git reset --hard origin/${BRANCH}"
 	else
-		sudo su - puppet -c "cd ${ENVIRONMENT_BASE}; git clone ${REPOSITORY} ${ACTUAL_BRANCH} --branch ${BRANCH}"
+		sudo su - pup -c "cd ${ENVIRONMENT_BASE}; git clone ${REPOSITORY} ${ACTUAL_BRANCH} --branch ${BRANCH}"
 	fi
 fi
  
