@@ -37,7 +37,7 @@ class gitolitepuppet::config inherits gitolitepuppet {
         }
         group { 'pupadm':
              gid => 1012,
-             members => ['gribble', 'gitolite3'], 
+             members => ['gitolite3'], 
         }
 	file { ['/var/pup',
                 '/var/pup/.ssh',]:
