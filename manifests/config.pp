@@ -23,4 +23,23 @@ class gitolitepuppet::config inherits gitolitepuppet {
 		content => epp('gitolitepuppet/puppet-post-receive.epp'),
 		require => File["/var/repos/local/hooks/repo-specific"],
 	}
+        sudoers::allowed_command { "pupadm":
+          group   => 'pupadm',
+          command => "/bin/su - puppet *",
+          require_password => false,
+          comment => "pupadm can use pup",
+        }
+        ssh_keygen { 'puppet':
+          home => '/var/puppet',
+          bits => '4096',
+          comment => 'puppet',
+          before => File['/var/repos/.gitolite/keydir/puppet.pub'],
+        }
+        file { '/var/repos/.gitolite/keydir/puppet.pub':
+          ensure => file,
+          source => '/var/puppet/.ssh/id_rsa.pub',
+          mode => '0600',
+          owner => 'gitolite3',
+          group => 'gitolite3',
+        }	
 }

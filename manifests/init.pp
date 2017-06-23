@@ -45,4 +45,5 @@
 class gitolitepuppet {
   require gitolite
   include gitolitepuppet::config
+  include sudoers
 }

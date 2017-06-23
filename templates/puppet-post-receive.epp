@@ -2,7 +2,7 @@
  
 read oldrev newrev refname
  
-REPOSITORY="<%= $gitolite::user_name -%>@puppet:puppet"
+REPOSITORY="<%= $gitolite::user_name -%>@localhost:puppet"
 BRANCH=$( echo "${refname}" | sed -n 's!^refs/heads/!!p' )
 ENVIRONMENT_BASE="/etc/puppetlabs/code/environments"
  
